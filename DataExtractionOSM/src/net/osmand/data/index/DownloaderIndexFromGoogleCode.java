@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -35,7 +36,44 @@ public class DownloaderIndexFromGoogleCode {
 //								IndexConstants.TRANSPORT_TABLE_VERSION + "" , //$NON-NLS-1$
 //								IndexConstants.ADDRESS_TABLE_VERSION + "", IndexConstants.POI_TABLE_VERSION + "",  //$NON-NLS-1$//$NON-NLS-2$
 //								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
-//		System.out.println(indexFiles);
+		Map<String, String> indexFiles = DownloaderIndexFromGoogleCode.getIndexFiles(
+				new String[] { IndexConstants.TRANSPORT_INDEX_EXT, IndexConstants.TRANSPORT_INDEX_EXT_ZIP,}, 
+				new String[] {	IndexConstants.TRANSPORT_TABLE_VERSION + "",  
+								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
+		System.out.println(indexFiles);
+		
+		
+		// put your ***REMOVED***s and personal information for delete
+		Map<String, String> ***REMOVED***s = new HashMap<String, String>();
+		***REMOVED***s.put("__utmb", "");
+		***REMOVED***s.put("__utmz", "");
+		***REMOVED***s.put("__utma", "");
+		***REMOVED***s.put("__utmc", "");
+		***REMOVED***s.put("PREF", "");
+		***REMOVED***s.put("HSID", "");
+		***REMOVED***s.put("SID", "");
+		***REMOVED***s.put("NID", "");
+		***REMOVED***s.put("__qca", "");
+		String pagegen = "";
+		String token = "";
+		
+		StringBuilder ***REMOVED***String = new StringBuilder();
+		int size = ***REMOVED***s.size();
+		for (String c : ***REMOVED***s.keySet()) {
+			size--;
+			***REMOVED***String.append(c).append("=").append(***REMOVED***s.get(c));
+			if (size > 0) {
+				***REMOVED***String.append("; ");
+			}
+		}
+		
+		for(String s : indexFiles.keySet()){
+			String description = indexFiles.get(s);
+			if(description.contains("0 MB")){
+				deleteFileFromGoogleDownloads(s, token, pagegen, 
+						***REMOVED***String.toString());
+			}
+		}
 		
 	}
 	
@@ -104,7 +142,7 @@ public class DownloaderIndexFromGoogleCode {
 	
 	
 	// that method doesn't work !!!
-	public static String deleteFileFromGoogleDownloads(String fileName, String token, String pagegen, String ***REMOVED***) throws IOException {
+	public static String deleteFileFromGoogleDownloads(String fileName, String token, String pagegen, String ***REMOVED***s) throws IOException {
 		// prepare data
 		String urlText = "http://code.google.com/p/osmand/downloads/delete.do?name="+fileName; //$NON-NLS-1$
 		System.out.println(urlText);
@@ -120,6 +158,7 @@ public class DownloaderIndexFromGoogleCode {
 		URL url = new URL(urlText);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		
+		connection.setRequestProperty("Cookie", ***REMOVED***s);
 		connection.setConnectTimeout(15000);
 		connection.setRequestMethod("POST"); //$NON-NLS-1$
 //		String token = userName + ":" + password; //$NON-NLS-1$
