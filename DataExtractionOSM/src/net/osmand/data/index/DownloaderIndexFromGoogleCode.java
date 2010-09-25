@@ -38,38 +38,38 @@ public class DownloaderIndexFromGoogleCode {
 //								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
 		Map<String, String> indexFiles = DownloaderIndexFromGoogleCode.getIndexFiles(
 				new String[] { IndexConstants.TRANSPORT_INDEX_EXT, IndexConstants.TRANSPORT_INDEX_EXT_ZIP,}, 
-				new String[] {	IndexConstants.TRANSPORT_TABLE_VERSION + "",  
+				new String[] {	IndexConstants.TRANSPORT_TABLE_VERSION + "",   //$NON-NLS-1$
 								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
 		System.out.println(indexFiles);
 		
 		
 		// put your ***REMOVED***s and personal information for delete
 		Map<String, String> ***REMOVED***s = new HashMap<String, String>();
-		***REMOVED***s.put("__utmb", "");
-		***REMOVED***s.put("__utmz", "");
-		***REMOVED***s.put("__utma", "");
-		***REMOVED***s.put("__utmc", "");
-		***REMOVED***s.put("PREF", "");
-		***REMOVED***s.put("HSID", "");
-		***REMOVED***s.put("SID", "");
-		***REMOVED***s.put("NID", "");
-		***REMOVED***s.put("__qca", "");
-		String pagegen = "";
-		String token = "";
+		***REMOVED***s.put("__utmb", "");  //$NON-NLS-1$//$NON-NLS-2$
+		***REMOVED***s.put("__utmz", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		***REMOVED***s.put("__utma", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		***REMOVED***s.put("__utmc", "");  //$NON-NLS-1$//$NON-NLS-2$
+		***REMOVED***s.put("PREF", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		***REMOVED***s.put("HSID", "");  //$NON-NLS-1$//$NON-NLS-2$
+		***REMOVED***s.put("SID", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		***REMOVED***s.put("NID", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		***REMOVED***s.put("__qca", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		String pagegen = ""; //$NON-NLS-1$
+		String token = ""; //$NON-NLS-1$
 		
 		StringBuilder ***REMOVED***String = new StringBuilder();
 		int size = ***REMOVED***s.size();
 		for (String c : ***REMOVED***s.keySet()) {
 			size--;
-			***REMOVED***String.append(c).append("=").append(***REMOVED***s.get(c));
+			***REMOVED***String.append(c).append("=").append(***REMOVED***s.get(c)); //$NON-NLS-1$
 			if (size > 0) {
-				***REMOVED***String.append("; ");
+				***REMOVED***String.append("; "); //$NON-NLS-1$
 			}
 		}
 		
 		for(String s : indexFiles.keySet()){
 			String description = indexFiles.get(s);
-			if(description.contains("0 MB")){
+			if(description.contains("0 MB")){ //$NON-NLS-1$
 				deleteFileFromGoogleDownloads(s, token, pagegen, 
 						***REMOVED***String.toString());
 			}
@@ -158,7 +158,7 @@ public class DownloaderIndexFromGoogleCode {
 		URL url = new URL(urlText);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		
-		connection.setRequestProperty("Cookie", ***REMOVED***s);
+		connection.setRequestProperty("Cookie", ***REMOVED***s); //$NON-NLS-1$
 		connection.setConnectTimeout(15000);
 		connection.setRequestMethod("POST"); //$NON-NLS-1$
 //		String token = userName + ":" + password; //$NON-NLS-1$
