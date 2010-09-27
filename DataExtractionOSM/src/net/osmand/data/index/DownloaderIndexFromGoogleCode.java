@@ -11,7 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -29,51 +28,36 @@ public class DownloaderIndexFromGoogleCode {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws URISyntaxException, IOException {
-//		Map<String, String> indexFiles = DownloaderIndexFromGoogleCode.getIndexFiles(
-//				new String[] { IndexConstants.ADDRESS_INDEX_EXT,	IndexConstants.POI_INDEX_EXT, IndexConstants.TRANSPORT_INDEX_EXT,
-//						IndexConstants.ADDRESS_INDEX_EXT_ZIP,	IndexConstants.POI_INDEX_EXT_ZIP, IndexConstants.TRANSPORT_INDEX_EXT_ZIP,}, 
-//				new String[] {	IndexConstants.ADDRESS_TABLE_VERSION + "", IndexConstants.POI_TABLE_VERSION + "",  //$NON-NLS-1$//$NON-NLS-2$
-//								IndexConstants.TRANSPORT_TABLE_VERSION + "" , //$NON-NLS-1$
-//								IndexConstants.ADDRESS_TABLE_VERSION + "", IndexConstants.POI_TABLE_VERSION + "",  //$NON-NLS-1$//$NON-NLS-2$
-//								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
 		Map<String, String> indexFiles = DownloaderIndexFromGoogleCode.getIndexFiles(
-				new String[] { IndexConstants.TRANSPORT_INDEX_EXT, IndexConstants.TRANSPORT_INDEX_EXT_ZIP,}, 
-				new String[] {	IndexConstants.TRANSPORT_TABLE_VERSION + "",   //$NON-NLS-1$
+				new String[] { IndexConstants.ADDRESS_INDEX_EXT,	IndexConstants.POI_INDEX_EXT, IndexConstants.TRANSPORT_INDEX_EXT,
+						IndexConstants.ADDRESS_INDEX_EXT_ZIP,	IndexConstants.POI_INDEX_EXT_ZIP, IndexConstants.TRANSPORT_INDEX_EXT_ZIP,}, 
+				new String[] {	IndexConstants.ADDRESS_TABLE_VERSION + "", IndexConstants.POI_TABLE_VERSION + "",  //$NON-NLS-1$//$NON-NLS-2$
+								IndexConstants.TRANSPORT_TABLE_VERSION + "" , //$NON-NLS-1$
+								IndexConstants.ADDRESS_TABLE_VERSION + "", IndexConstants.POI_TABLE_VERSION + "",  //$NON-NLS-1$//$NON-NLS-2$
 								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
 		System.out.println(indexFiles);
 		
-		
 		// put your ***REMOVED***s and personal information for delete
-		Map<String, String> ***REMOVED***s = new HashMap<String, String>();
-		***REMOVED***s.put("__utmb", "");  //$NON-NLS-1$//$NON-NLS-2$
-		***REMOVED***s.put("__utmz", ""); //$NON-NLS-1$ //$NON-NLS-2$
-		***REMOVED***s.put("__utma", ""); //$NON-NLS-1$ //$NON-NLS-2$
-		***REMOVED***s.put("__utmc", "");  //$NON-NLS-1$//$NON-NLS-2$
-		***REMOVED***s.put("PREF", ""); //$NON-NLS-1$ //$NON-NLS-2$
-		***REMOVED***s.put("HSID", "");  //$NON-NLS-1$//$NON-NLS-2$
-		***REMOVED***s.put("SID", ""); //$NON-NLS-1$ //$NON-NLS-2$
-		***REMOVED***s.put("NID", ""); //$NON-NLS-1$ //$NON-NLS-2$
-		***REMOVED***s.put("__qca", ""); //$NON-NLS-1$ //$NON-NLS-2$
-		String pagegen = ""; //$NON-NLS-1$
-		String token = ""; //$NON-NLS-1$
-		
-		StringBuilder ***REMOVED***String = new StringBuilder();
-		int size = ***REMOVED***s.size();
-		for (String c : ***REMOVED***s.keySet()) {
-			size--;
-			***REMOVED***String.append(c).append("=").append(***REMOVED***s.get(c)); //$NON-NLS-1$
-			if (size > 0) {
-				***REMOVED***String.append("; "); //$NON-NLS-1$
-			}
-		}
-		
-		for(String s : indexFiles.keySet()){
-			String description = indexFiles.get(s);
-			if(description.contains("0 MB")){ //$NON-NLS-1$
-				deleteFileFromGoogleDownloads(s, token, pagegen, 
-						***REMOVED***String.toString());
-			}
-		}
+//		Map<String, String> ***REMOVED***s = new HashMap<String, String>();
+//		***REMOVED***s.put("__utmz", ""); //$NON-NLS-1$ //$NON-NLS-2$ // ?
+//		***REMOVED***s.put("__utma", ""); //$NON-NLS-1$ //$NON-NLS-2$ // ?
+//		***REMOVED***s.put("HSID", "");  //$NON-NLS-1$//$NON-NLS-2$
+//		***REMOVED***s.put("SID", ""); //$NON-NLS-1$ //$NON-NLS-2$
+//		***REMOVED***s.put("NID", ""); //$NON-NLS-1$ //$NON-NLS-2$
+//		String pagegen = ""; //$NON-NLS-1$
+//		String token = ""; //$NON-NLS-1$
+//		
+//		StringBuilder ***REMOVED***String = new StringBuilder();
+//		int size = ***REMOVED***s.size();
+//		for (String c : ***REMOVED***s.keySet()) {
+//			size--;
+//			***REMOVED***String.append(c).append("=").append(***REMOVED***s.get(c)); //$NON-NLS-1$
+//			if (size > 0) {
+//				***REMOVED***String.append("; "); //$NON-NLS-1$
+//			}
+//		}
+//		deleteFileFromGoogleDownloads(odb, token, pagegen, 
+//				***REMOVED***String.toString());
 		
 	}
 	
