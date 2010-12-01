@@ -55,7 +55,7 @@ public class DownloaderIndexFromGoogleCode {
 				BINARY_MAP_VERSION + BINARY_MAP_INDEX_EXT_ZIP,
 				VOICE_VERSION + VOICE_INDEX_EXT_ZIP);
 		for(String s : files.keySet()){
-			System.out.println(s);
+			System.out.println(s + " " + files.get(s)); //$NON-NLS-1$
 		}
 //								IndexConstants.TRANSPORT_TABLE_VERSION + "" }); //$NON-NLS-1$
 //		Map<String, String> indexFiles = DownloaderIndexFromGoogleCode.getIndexFiles(
@@ -114,7 +114,7 @@ public class DownloaderIndexFromGoogleCode {
 				}
 			}
 		}
-		log.info("Loaded indexes:" + files.size());
+		log.info("Loaded indexes:" + files.size()); //$NON-NLS-1$
 		return files;
 	}
 	
@@ -139,8 +139,8 @@ public class DownloaderIndexFromGoogleCode {
 		if (prevFile != null && ((i = content.indexOf('{')) != -1)) {
 			int j = content.indexOf('}');
 			if (j != -1 && j - i < 40) {
-				String description = content.substring(i, j + 1);
-				files.put(prevFile, description);
+				// String description = content.substring(i, j + 1);
+				files.put(prevFile, content);
 				prevFile = null;
 			}
 		}
@@ -160,8 +160,8 @@ public class DownloaderIndexFromGoogleCode {
 	public static String deleteFileFromGoogleDownloads(String fileName, String token, String pagegen, String ***REMOVED***HSID, String ***REMOVED***SID) throws IOException {
 		// prepare data
 		Map<String, String> ***REMOVED***s = new HashMap<String, String>();
-		***REMOVED***s.put("HSID", ***REMOVED***HSID);  //$NON-NLS-1$//$NON-NLS-2$
-		***REMOVED***s.put("SID", ***REMOVED***SID); //$NON-NLS-1$ //$NON-NLS-2$
+		***REMOVED***s.put("HSID", ***REMOVED***HSID);  //$NON-NLS-1$
+		***REMOVED***s.put("SID", ***REMOVED***SID); //$NON-NLS-1$
 		StringBuilder ***REMOVED***String = new StringBuilder();
 		int size = ***REMOVED***s.size();
 		for (String c : ***REMOVED***s.keySet()) {
