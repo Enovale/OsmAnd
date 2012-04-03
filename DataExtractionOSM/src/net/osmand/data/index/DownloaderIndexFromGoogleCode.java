@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.osmand.LogUtil;
+import net.osmand.data.index.ExtractGooglecodeAuthorization.GooglecodeUploadTokens;
 
 import org.apache.commons.logging.Log;
 
@@ -136,11 +137,11 @@ public class DownloaderIndexFromGoogleCode {
 	}
 	
 	
-	public static String deleteFileFromGoogleDownloads(String fileName, String token, String pagegen, String ***REMOVED***HSID, String ***REMOVED***SID) throws IOException {
+	public static String deleteFileFromGoogleDownloads(String fileName, GooglecodeUploadTokens ggtokens) throws IOException {
 		// prepare data
 		Map<String, String> ***REMOVED***s = new HashMap<String, String>();
-		***REMOVED***s.put("HSID", ***REMOVED***HSID);  //$NON-NLS-1$
-		***REMOVED***s.put("SID", ***REMOVED***SID); //$NON-NLS-1$
+		***REMOVED***s.put("HSID", ggtokens.getHsid());  //$NON-NLS-1$
+		***REMOVED***s.put("SID", ggtokens.getSid()); //$NON-NLS-1$
 		StringBuilder ***REMOVED***String = new StringBuilder();
 		int size = ***REMOVED***s.size();
 		for (String c : ***REMOVED***s.keySet()) {
@@ -155,8 +156,8 @@ public class DownloaderIndexFromGoogleCode {
 		log.info("Url to delete :" + urlText);
 		StringBuilder requestBody = new StringBuilder();
 		requestBody.
-				append("token=").append(token). //$NON-NLS-1$
-				append("&pagegen=").append(pagegen). //$NON-NLS-1$
+				append("token=").append(ggtokens.getToken()). //$NON-NLS-1$
+				append("&pagegen=").append(ggtokens.getPagegen()). //$NON-NLS-1$
 				append("&filename=").append(fileName). //$NON-NLS-1$
 				append("&delete=Delete+download"); //$NON-NLS-1$
 		log.info("Request body : " + requestBody);
