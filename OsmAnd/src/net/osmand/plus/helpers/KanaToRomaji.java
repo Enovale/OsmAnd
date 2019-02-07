@@ -1,4 +1,4 @@
-package net.osmand.plus;
+package net.osmand.plus.helpers;
 
 import java.util.HashMap;
 import java.util.Map;
